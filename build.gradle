@@ -1,0 +1,33 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.task'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation platform('org.apache.camel.springboot:camel-spring-boot-bom:3.11.0')
+	implementation 'org.apache.camel.springboot:camel-spring-boot-starter'
+	implementation 'org.apache.camel:camel-rabbitmq:3.11.0'
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+	implementation 'org.apache.camel:camel-jackson:3.11.0'
+	compileOnly('org.projectlombok:lombok:1.18.26')
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
